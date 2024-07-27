@@ -54,9 +54,18 @@ class QueueConsumer:
     async def main(self):
         self.l.passing('consumer started')
         
-        bad_words = read_json_file('filter.json')['blacklist']
-        ignored_users = read_json_file('filter.json')['ignored_users']
-        
+        filters = read_json_file('filter.json')
+        if filters is not None:
+            bad_words = filters['blacklist']
+            ignored_users = filters['ignored_users']
+        else:
+            bad_words = []
+            ignored_users = []
+            dummy_filter = {
+                "blacklist": [],
+                "ignored_users": []
+                }
+            write_to_json_file(dummy_filter, 'filter.json')
         try:
             while (True):
                 
