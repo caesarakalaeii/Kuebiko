@@ -1,4 +1,4 @@
-# You're Twitch Token 
+# Your Twitch Token
 TWITCH_TOKEN = ""
 # Your TWITCH Channel Name
 TWITCH_CHANNEL = ""

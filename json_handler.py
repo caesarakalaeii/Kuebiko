@@ -1,12 +1,14 @@
 import json
+import os
 
-def read_json_file(file_path:str)-> dict:
+
+def read_json_file(file_path: str) -> dict:
     """
     Read a JSON file and return its content as a Python dictionary.
-    
+
     Args:
     - file_path (str): The path to the JSON file.
-    
+
     Returns:
     - dict: The content of the JSON file as a dictionary.
     """
@@ -16,19 +18,21 @@ def read_json_file(file_path:str)-> dict:
         return json_content
     except FileNotFoundError:
         print(f"Error: File '{file_path}' not found.")
-        return None
+        return {}
     except json.JSONDecodeError:
         print(f"Error: File '{file_path}' is not a valid JSON file.")
-        return None
-    
+        return {}
+
+
+
 def write_to_json_file(data, file_path):
     """
     Write data to a JSON file.
-    
+
     Args:
     - data (dict): The data to be written, should be a dictionary.
     - file_path (str): The path to the JSON file to write.
-    
+
     Returns:
     - bool: True if writing is successful, False otherwise.
     """
